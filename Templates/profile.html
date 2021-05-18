@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        {% if user.is_authenticated %}
+            {% for data in profile %}
+                <h1>{{data.user}}</h1>
+
+                
+                {{ profile_img.image.url }}
+                <p>{{data.bio}}</p>
+                {{data.first_name}}
+                {{data.second_name}}
+                <p>{{data.Email}}</p>
+                {{data.phone}}
+                {{ data.profile_img }}
+            {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>

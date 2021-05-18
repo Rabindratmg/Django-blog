@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django documentation</title>
+</head>
+<body>
+    <div>
+        <h1>this is django page</h1>
+        welcome {{user.username}}
+        {% if user.is_authenticated %}
+                your are currently login do you want to logout?
+                <a href="{% url  'logout' %}">logout</a>
+        {% else %}
+            you does not have any account.
+            <a href="{% url  'register' %}">Register</a>
+            <a href="{% url  'login' %}">login</a>
+        {% endif %}
+        {% block content %}
+            {% if blogs %}
+                {% for blog in blogs %}
+                    <h2>{{ blog.title }}</h2>
+                    <h4>{{ blog.author.username }}</h4>
+                    <p>{{ blog.description }}</p>
+                    <img src='media\{{blog.blog_images}}'  alt="profile picture" width="100" height="100">
+                {% endfor %}
+            {% else %}
+                <h1> No blog found </h1>
+            {% endif %}
+
+        {% endblock %}
+    </div>
+    
+</body>
+</html>
