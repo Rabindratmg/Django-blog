@@ -12,8 +12,6 @@
         {% if user.is_authenticated %}
             {% for data in profile %}
                 <h1>{{data.user}}</h1>
-
-                
                 {{ profile_img.image.url }}
                 <p>{{data.bio}}</p>
                 {{data.first_name}}
@@ -22,6 +20,9 @@
                 {{data.phone}}
                 {{ data.profile_img }}
             {% endfor %}
+        {% else%}
+            <h1> Please login to view this page </h1>
+
         {% endif %}
     </div>
 </body>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Account
-from .forms import UserCreationForm
+from .forms import UserCreationForm, LoginUserForm
 from django.http import request
 from django.contrib.auth import login, authenticate,logout
 
@@ -22,7 +22,9 @@ def create_user(request):
     
     else:
         form=UserCreationForm()
-        return render(request,'home.html',{'forms':form})
+    
+    
+    return render(request,'home.html',{'forms':form})
 
 
 
@@ -31,5 +33,19 @@ def logout_user(request):
     return redirect("home")
 
 def login_user(request):
-    pass
-    return redirect("home")
+    user= request.user
+    if user.is_authenticated:
+        return redirect("home")
+
+    if request.POST:
+        form = LoginUserForm(request.POST)
+        email=request.POST['email']
+        password=request.POST['password']
+        user= authenticate(email=email,password=password)
+        login(request,user)
+        return redirect('home')  
+
+
+    else:
+        form=LoginUserForm()
+        return render(request,'login.html',{'forms':form})

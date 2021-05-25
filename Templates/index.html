@@ -21,16 +21,19 @@
             <a href="{% url  'login' %}">login</a>
         {% endif %}
         {% block content %}
+            <hr>
             {% if blogs %}
                 {% for blog in blogs %}
                     <h2>{{ blog.title }}</h2>
                     <h4>{{ blog.author.username }}</h4>
-                    <p>{{ blog.description }}</p>
                     <img src='media\{{blog.blog_images}}'  alt="profile picture" width="100" height="100">
+                    <p>{{ blog.description }}</p>
+                    
                 {% endfor %}
             {% else %}
                 <h1> No blog found </h1>
             {% endif %}
+            <hr>
 
         {% endblock %}
     </div>

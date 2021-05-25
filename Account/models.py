@@ -52,7 +52,7 @@ class Account(AbstractBaseUser):
     first_name = models.CharField(max_length=200,blank=True)
 
 
-    USERNAME_FIELD='email'
+    USERNAME_FIELD='email' or 'username'
     REQUIRED_FIELDS=['username','first_name']
 
     objects = MyAccountManager()

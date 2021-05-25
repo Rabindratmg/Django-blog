@@ -9,9 +9,14 @@
 <body>
     <div>
         <form method="POST">{% csrf_token %}
-            <h4>{{forms}}</h4>
-            <button type='submit'>create</button>
-        </form>
+            {% for form in forms%}
+                <p> {{form.label_tag}}<p>
+                    {{form}}
+            {% endfor %}
+            <br>
+            <br>
+            <button type='submit'>Register</button>
+        
     </div>
     
 </body>
