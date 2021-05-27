@@ -6,39 +6,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Django documentation</title>
+    <title>Blog App</title>
 </head>
 <body>
     <div>
         <h1>Blog</h1>
-        
-        {% if user.is_authenticated %}
-                welcome {{user.username}}
-                <br>
-                <a href="{% url  'logout' %}"><button>logout</buton></a>
-        {% else %}
-            you does not have any account.
-            <a href="{% url  'register' %}"><button>Register</button>r</a>
-            <a href="{% url  'login' %}"><button>login</button></a>
-        {% endif %}
         {% block content %}
-        <br>
-            <a href="{% url  'addblog' %}"><button>AddBlog</button></a>
-            {% if object_list %}
-                {% for blog in object_list %}
-                <hr>
-                    <a href="{% url 'blogdetail' blog.pk %}" <h2>{{ blog.title }}</h2> </a>
-                    <h4><img src={{user.img.url}} width="20" height="20">{{ blog.author.username }}</h4>
-                    <img src='media\{{blog.blog_images}}'  alt="Blog images" width="100" height="100">
-                    <p>{{ blog.description }}</p>
-                    
-                {% endfor %}
-            {% else %}
-                <h1> No blog found </h1>
+
+            {% if user.is_authenticated %}
+                    <h4>welcome {{user.username}}</h4>
+                    <a href="{% url  'logout' %}"><button>logout</buton></a>
+                    <a href="{% url  'addblog' %}"><button>AddBlog</button></a>
+
+             {% else %}
+                you does not have any account.
+                <a href="{% url  'register' %}"><button>Register</button></a>
+                <a href="{% url  'login' %}"><button>login</button></a>
             {% endif %}
+
+
+              {% if object_list %}
+                    {% for blog in object_list %}
+                    <hr>
+                        <a href="{% url 'blogdetail' blog.pk %}" <h2>{{ blog.title }}</h2> </a>
+                        <h4>{{ blog.author.username }}</h4>
+                        <img src='media\{{blog.blog_images}}'  alt="Blog images" width="100" height="100">
+                        <p>{{ blog.description }}</p>
+
+                    {% endfor %}
+                {% else %}
+                    <h1> No blog found </h1>
+                {% endif %}
 
         {% endblock %}
     </div>
-    
+
 </body>
 </html>
