@@ -1,0 +1,7 @@
+{% block content %}
+    <form method="POST">{% csrf_token %}
+            <strong>Are you sure want to delete? <strong>
+            <button>yes</button>
+    </form>
+{% endblock %}
+ <a href='{% url "home" %}'><button>No</button><a/>

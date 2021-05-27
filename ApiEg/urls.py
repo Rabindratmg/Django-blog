@@ -23,7 +23,11 @@ from Account import views as account_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",blog_view.Home,name='home'),
+    path("",blog_view.Home.as_view(),name='home'),
+    path("addblog/",blog_view.BlogCreateView.as_view(),name='addblog'),
+    path("updateblog/<int:pk>",blog_view.UpdateBlog.as_view(),name='updateblog'),
+    path("deleteblog/<int:pk>",blog_view.DeleteBlog.as_view(),name='deleteblog'),
+    path("blogdetail/<int:pk>", blog_view.BlogDetail.as_view(), name='blogdetail'),
     path('profile/',profile_view.Profile, name='profile'),
     path('register/',account_view.create_user, name='register'),
     path('logout/',account_view.logout_user, name='logout'),

@@ -1,0 +1,9 @@
+<h4><img src={{blog.author.profile_image.url}} width="20" height="20">{{ blog.author.username }}</h4>
+<img src='{{blog.blog_images.url}}'  alt="Blog images" width="100" height="100">
+<p>{{ blog.description }}</p>
+<p>{{ blog.date_created }} </p>
+
+<a href={% url 'updateblog' blog.id %}><button>Edit</button></a> 
+<a href={% url 'deleteblog' blog.id %}><button>Delete</button></a>
+
+                    

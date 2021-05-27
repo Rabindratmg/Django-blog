@@ -9,7 +9,7 @@ class User_Profile(models.Model):
     first_name=models.CharField(max_length=200, blank=True)
     last_name=models.CharField(max_length=200, blank=True)
     Email=models.EmailField(max_length=60,blank=True)
-    phone=models.IntegerField(blank=True)
+    phone=models.IntegerField(null=True, blank=True)
     profile_img=models.ImageField(upload_to="Profile", default="profile.png")
     bio=models.TextField(default="Respresentation of bio")
     created=models.DateTimeField(auto_now_add=True)
