@@ -16,6 +16,7 @@
                 welcome {{user.username}}
                 <br>
                 <a href="{% url  'logout' %}"><button>logout</buton></a>
+                <a href="{% url  'addblog' %}"><button>AddBlog</button></a>
         {% else %}
             you does not have any account.
             <a href="{% url  'register' %}"><button>Register</button>r</a>
@@ -23,7 +24,6 @@
         {% endif %}
         {% block content %}
         <br>
-            <a href="{% url  'addblog' %}"><button>AddBlog</button></a>
             {% if object_list %}
                 {% for blog in object_list %}
                 <hr>
