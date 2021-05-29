@@ -1,7 +1,8 @@
 {% block content %}
+<strong>Are you sure want to delete? <strong>
     <form method="POST">{% csrf_token %}
-            <strong>Are you sure want to delete? <strong>
-            <button>yes</button>
+            <button>yes</button>         
     </form>
+    <a href='{% url "home" %}'><button>No</button><a/>
 {% endblock %}
- <a href='{% url "home" %}'><button>No</button><a/>
+ 

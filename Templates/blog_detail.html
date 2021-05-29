@@ -3,7 +3,15 @@
 <p>{{ blog.description }}</p>
 <p>{{ blog.date_created }} </p>
 
-<a href={% url 'updateblog' blog.id %}><button>Edit</button></a> 
-<a href={% url 'deleteblog' blog.id %}><button>Delete</button></a>
+
+{% if object.author == user %}
+    <a href={% url 'updateblog' blog.id %}><button>Edit</button></a> 
+    <a href={% url 'deleteblog' blog.id %}><button>Delete</button></a>
+    <a href={% url 'home' %}><button>Back</button></a>
+    
+
+{% else %}
+    <a href={% url 'home' %}><button>Back</button></a>
+{% endif %}
 
                     

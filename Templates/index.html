@@ -22,6 +22,8 @@
                 you does not have any account.
                 <a href="{% url  'register' %}"><button>Register</button></a>
                 <a href="{% url  'login' %}"><button>login</button></a>
+
+            {% endif %}
             {% if object_list %}
                     {% for blog in object_list %}
                     <hr>

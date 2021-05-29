@@ -10,19 +10,10 @@
 <body>
     <div>
         {% if user.is_authenticated %}
-            {% for data in profile %}
-                <h1>{{data.user}}</h1>
-                <img src={{ data.profile_img.url }} height=100px width=100/>
-                <p>{{data.bio}}</p>
-                {{data.first_name}}
-                {{data.second_name}}
-                <p>{{data.Email}}</p>
-                {% if data.phone %}
-                    {{ data.phone}}
-                {% else%}
-
-                {% endif %}
-            {% endfor %}
+                <h1>{{user.username}}</h1>
+                <h4>{{user.email}}</h4>
+                <h4>{{user.first_name}}</h4>
+                <h4>{{user.phone}}</h4>
         {% else%}
             <h1> Please login to view this page </h1>
 
