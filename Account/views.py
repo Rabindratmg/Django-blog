@@ -18,12 +18,10 @@ def create_user(request):
             return redirect('home')
         else:
              form=UserCreationForm()
-
-    
+             return render(request,'home.html',{'forms':form,'error':'paswword didnt match'})
     else:
         form=UserCreationForm()
-    
-    
+  
     return render(request,'home.html',{'forms':form})
 
 
@@ -43,7 +41,8 @@ def login_user(request):
         password=request.POST['password']
         user= authenticate(email=email,password=password)
         login(request,user)
-        return redirect('home')  
+        return redirect('home') 
+       
 
 
     else:

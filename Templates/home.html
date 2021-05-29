@@ -12,6 +12,8 @@
             {% for form in forms%}
                 <p> {{form.label_tag}}<p>
                     {{form}}
+            {% if error %}
+                {{ error }}
             {% endfor %}
             <br>
             <br>
